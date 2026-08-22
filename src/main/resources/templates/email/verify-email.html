@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<body>
+
+<h2>Hello <span th:text="${firstName}"></span> 👋</h2>
+
+<p>
+    Please verify your email address.
+</p>
+
+<a th:href="${verificationUrl}">
+    Verify Email
+</a>
+
+</body>
+
+</html>
