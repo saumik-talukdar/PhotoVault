@@ -6,6 +6,7 @@ import com.saumik.photovault.repository.UserRepository;
 import com.saumik.photovault.security.RefreshTokenService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +43,10 @@ public class UserService {
 
     public void logoutAll(UUID userId) {
         refreshTokenService.revokeAllRefreshTokens(userId);
+    }
+
+    public User getByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }
